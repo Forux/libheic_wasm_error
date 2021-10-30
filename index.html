@@ -1,0 +1,17 @@
+<html>
+<body>
+    <script src="libheif.js"></script>>
+    <script>
+        let decoder = new libheif.HeifDecoder();
+        (async () => {
+            let response = await fetch("imtest90.avif");
+            let data = await response.arrayBuffer();
+            console.log(data);
+            let result = decoder.decode(data);
+            let img = result[0];
+            console.log(img.get_width(), img.get_height());
+            console.log(result);
+        })();
+    </script>
+</body>
+</html>
